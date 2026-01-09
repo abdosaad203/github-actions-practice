@@ -1,22 +1,24 @@
-name: step output - Question 2
+name: Step Output - Question 2
+
 on:
   workflow_dispatch:
-    
+
 jobs:
   step-output-demo:
     runs-on: ubuntu-latest
+
     steps:
-      - name: generate random number
+      - name: Generate random number
         id: random_step
         run: |
           RANDOM_NUMBER=$(( RANDOM % 10 + 1 ))
           echo "random_number=$RANDOM_NUMBER" >> $GITHUB_OUTPUT
-          echo: "Generated random number: $RANDOM_NUMBER"
+          echo "Generated random number: $RANDOM_NUMBER"
 
       - name: Check random number
-        if: steps.random_step.outputs.random_number > 5
+        if: ${{ steps.random_step.outputs.random_number > 5 }}
         run: |
           echo "Random number is greater than 5: ${{ steps.random_step.outputs.random_number }}"
-      
+
       - name: Workflow completed
         run: echo "Workflow completed"
