@@ -12,4 +12,11 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run Docker Message Action
+        id: docker_step
         uses: ./.github/actions/docker-message
+        with:
+          message: "Hello World"
+
+      - name: Print output from action
+        run: |
+          echo "Output from action: ${{ steps.docker_step.outputs.final_message }}"
