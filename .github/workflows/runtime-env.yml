@@ -1,0 +1,24 @@
+name: Runtime Environment Variables - Question 1
+on:
+  workflow_dispatch:
+
+jobs:
+  env-demo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set GREETING variable
+        run: |
+          echo "GREETING=Hello, GitHub Actions!" >> $GITHUB_ENV
+
+      - name: Print GREETING
+        run: |
+          echo "$GREETING"
+
+      - name: Update GREETING
+        run: |
+          echo "GREETING=Hello, Abdo!" >> $GITHUB_ENV
+
+      - name: Print updated GREETING
+        run: |
+          echo "$GREETING"
