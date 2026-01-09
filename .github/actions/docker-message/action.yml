@@ -1,0 +1,6 @@
+name: Docker Message Action
+description: Simple custom action example
+
+runs:
+  using: docker
+  image: Dockerfile
